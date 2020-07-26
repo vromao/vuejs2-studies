@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="" />
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>VueJS 2 Teaser</h1>
+      <input type="text" v-on:input="changeGreeting" />
+      
+      <!-- Two-way Data binding input -->
+      <input type="text" v-model="greeting"/>
+      <p>{{ greeting }}</p>
+
+      <button v-on:click="increase">Click me</button>
+      <button v-on:click="counter++">Click me 2</button>
+
+      <p>{{ counter }}</p>
+
+      <p v-on:mousemove="updateCoordinates">
+        Coordinates: {{ x }} / {{ y }}
+        <!-- Vue modifier to stop propagation of mouseMove running updateCoordinates -->
+        - <span v-on:mousemove.stop>DEAD SPOT</span>
+      </p>
+
+      <input type="text" v-on:keyup.enter="alertMe" />
+    </div>
+
+    <h2>More in exercises:</h2>
+    <a href="exercises/exercise-1.html">Exercise 1</a>
+    <a href="exercises/exercise-2.html">Exercise 2</a>
+    <a href="exercises/exercise-3.html">Exercise 3</a>
+    <a href="exercises/exercise-4.html">Exercise 4</a>
+    <script>
+      // You may of course also outsource this script code into a separate file (e.g. app.js) and simply import this file here
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          greeting: "Hello World!",
+          x: 0,
+          y: 0,
+        },
+        methods: {
+          changeGreeting: function (event) {
+            this.greeting = event.target.value;
+          },
+          increase: function () {
+            this.counter++;
+          },
+          updateCoordinates: function (event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          alertMe: function() {
+            alert('Alert!');
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
