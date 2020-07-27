@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>Exercise 5</title>
+  </head>
+  <body>
+    <a href="../index.html">Return Basics</a>
+
+    <div id="exercise">
+      <!-- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference -->
+      <div>
+        <button @click="toogleButton">Toggle</button>
+        <p v-if="show">You either see me ...</p>
+        <p v-else>...or me</p>
+        <p v-show="show">You either see me ...</p>
+        <p v-show="!show">...or me</p>
+      </div>
+
+      <!-- 2) Output an <ul> of array elements of your choice. Also print the index of each element. -->
+      <ul>
+        <li v-for="(name, index) in namesArray">{{ name }} ({{ index }})</li>
+      </ul>
+
+      <!-- 3) Print all key-value pairs of the following object: {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'}. Also print the index of each item. -->
+      <ul>
+        <li v-for="(serie, key, index) in lotrInfos">
+          {{ key }} : {{ serie }} ({{ index }})
+        </li>
+      </ul>
+
+      <!-- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this) -->
+      <ul>
+        <li v-for="(testDataItem, key) in testData">
+          {{ key }}:
+          <template v-if="Array.isArray(testDataItem)">
+            <ul>
+              <li v-for="dataItems in testDataItem">{{ dataItems }}</li>
+            </ul>
+          </template>
+          <span v-else>
+            {{ testDataItem }}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#exercise',
+        data: {
+          namesArray: ['Max', 'Anna', 'Chris', 'Manu'],
+          lotrInfos: {
+            title: 'Lord of the Rings',
+            author: 'J.R.R. Tolkiens',
+            books: '3',
+          },
+          testData: {
+            name: 'TESTOBJECT',
+            id: 10,
+            data: [1.67, 1.33, 0.98, 2.21],
+          },
+          show: true,
+        },
+        methods: {
+          toogleButton: function () {
+            this.show = !this.show;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
