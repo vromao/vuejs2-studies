@@ -49,3 +49,7 @@
   - É possível fazer **v-for** encadeados. No encadeados podemos ter acesso a (value, key, index).
   - É possível iterar sobe números passados para o **v-for:** v-for=”n in 10”
   - Recomendado usar **:key=”ingridient”** no v-for para que o Vue por baixo dos panos não só guarde a posição do elemento mas o elemento em si (sem o key ele não faz isso por default). Isso faz diferença se em algum momento precisarmos reordenar a lista por exemplo. Ele não vai apenas mudar as posições na memoria e vai também carregar os itens junto, além das posições.
+
+## Vue Instance
+- Podemos ter mais de uma instancia do Vue pegando porções de código diferente
+  - As propriedades, metódos e etc de uma estancia são acessíveis a intancia em que eles pertencem, e **não é recomendado** acessar de outras intancias. As propriedades devem estar na mesma intancia e atreladas a mesma **regra de negócios**
