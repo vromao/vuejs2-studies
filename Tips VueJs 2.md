@@ -37,7 +37,10 @@
 - A propriedade **watch** funciona de uma maneira inversa da maioria. No objeto dela as propriedades **devem** **ser** as propriedades (qualquer propriedade, não apenas as que estão em **data**) que nós queremos **escutar as mudanças.** É sempre recomendando usar **computed** por ser mais otimizado e só usar **watch** em ultimo caso.
 
 - Existem shorthands para as direticas, como **v-on:click** = **@click** ou **v-bind:href** = **:href.**
+
 - Para condicionais temos as diretivas **v-if=”var”,** **v-else e v-else-if** que funcionam parecido com angularJs. O else/else-if deve vir na sequencia da tag com o if e será mostrado caso não caia na condição do if.
+  - **v-else** só funciona se:
+    - Estiver exatamente em baixo do elemento com **v-if** e for do mesmo tipo de tag (se a tag que tem v-if for uma section a tag com v-else **também precisa ser** section).
 
 - Também podemos fazer a mesma coisa do if/else usando **v-show**. É recomendado sempre irmos pelo caminho do if/else pois os mesmos são mais performáticos. Usar o show apenas em ocasiões necessárias.
 
