@@ -51,5 +51,26 @@
   - Recomendado usar **:key=”ingridient”** no v-for para que o Vue por baixo dos panos não só guarde a posição do elemento mas o elemento em si (sem o key ele não faz isso por default). Isso faz diferença se em algum momento precisarmos reordenar a lista por exemplo. Ele não vai apenas mudar as posições na memoria e vai também carregar os itens junto, além das posições.
 
 ## Vue Instance
+### Vue Lifecycle
+<img src="https://vuejs.org/images/lifecycle.png" alt="VueJs Lifecycle" width="280">
+<p align="center">complete Lifecycle from VueJs Docs</p>
+
+
+
+<img src="./vue-basics/vue-instance/vue-lifecycle-diagram.png" alt="VueJs Lifecycle" width="600">
+<p align="center">Another example of VueJs lifecycle</p>
+
+
+
+### Funcionamento
 - Podemos ter mais de uma instancia do Vue pegando porções de código diferente
   - As propriedades, metódos e etc de uma estancia são acessíveis a intancia em que eles pertencem, e **não é recomendado** acessar de outras intancias. As propriedades devem estar na mesma intancia e atreladas a mesma **regra de negócios**
+  - Para acessar basta atribuir as instancias em variáveis e por meio das variaveis será possivel acessar todos os métodos e datas de ambas (Vue faz o mesmo sistema de proxy aqui, não precisando do this). Por exemplo: vm1.title = this.title (equivale a propriedade dentro de data da instancia 1)
+- Se atribuirmos a instancia em uma variável e dar um console nela poderemos ver várias propriedades da instancia que podem ajudar a enxergar tudo que a compõe.
+- VueJS não impede a integração com JavaScript puro. Como vimos sua instancia pode ser acessada por fora além de que se quisermos por exemplo fazer o objeto de data em uma variável antes da instancia e passar pra ela, funcionara.
+- Na instancia temos a propriedade **$refs** que guarda todas as referencias de tags que encontrar dentro dela. Para usar a referencia basta escrever em alguma tag "**ref=nomeDaRefQueVcQuiser**" (ref é uma tag conhecida por Vue, não sendo algo do HTML em si nesse caso). Esse nome estara disponível dentro de **$refs**. As tags guardadas são elementos HTML nativos. Isso pode ser útil se precisarmos acessar algo do elemento nativo ou algo muito especifico
+- Vale lembrar que usar **refs** ou mexer com a instancia fora do template do Vue **não é reativo** então deve ser evitado e usado apenas se realmente houver necessidade.
+- Podemos usar dentro da instancia a propriedade **template** e passarmos o código html referente a esse template. Isso é similar ao uso do **el** a diferença é que o template já fica definido ali. Podemos combinar isso com o **instancia.$mount('#elemento')**. Usar **template** ou **$mount()** não é comum e o Vue ofereça opções melhores pra isso (como componentes e o proprio **el**).
+- VueJs tem duas versões que permitem criar componentes de forma diferente. Nó podemos criar templates no "Vue puro" fazendo algo como
+- VueJS usa Virtual DOM para checar se há diferenças fazer as mudanças em cima dos watchers de cada property que temos. Isso faz com que o VueJs seja rápido, pois ele não acessa diretamente o DOM a todo momento. Ele sempre usa a copia do Virtual DOM, que sempre é atualizada quando algo muda para depois mandar a mudança para o DOM verdadeiro.
+
