@@ -52,12 +52,15 @@
 
 ## Vue Instance
 ### Vue Lifecycle
-<img src="https://vuejs.org/images/lifecycle.png" alt="VueJs Lifecycle" width="280">
+<p align="center">
+  <img src="https://vuejs.org/images/lifecycle.png" alt="VueJs Lifecycle" width="280">
+</p>
 <p align="center">complete Lifecycle from VueJs Docs</p>
 
 
-
-<img src="./vue-basics/vue-instance/vue-lifecycle-diagram.png" alt="VueJs Lifecycle" width="600">
+<p align="center">
+  <img src="./vue-basics/vue-instance/vue-lifecycle-diagram.png" alt="VueJs Lifecycle" width="600">
+</p>
 <p align="center">Another example of VueJs lifecycle</p>
 
 
